@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DCA9F8B4-D37D-4053-BB08-94AC68422261}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FA1811AHS</RootNamespace>
+    <AssemblyName>FA1811AHS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Communication, Version=6.17.921.1422, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Communication.dll</HintPath>
+    </Reference>
+    <Reference Include="ConnPLCcommand, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\ConnPLCcommand.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.1.50.4\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.FluentColumnMapping, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.FluentColumnMapping.1.1.0\lib\net451\Dapper.FluentColumnMapping.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.FluentMap, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.FluentMap.1.6.0\lib\net451\Dapper.FluentMap.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.FluentMap.Dommel, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.FluentMap.Dommel.1.5.0\lib\net451\Dapper.FluentMap.Dommel.dll</HintPath>
+    </Reference>
+    <Reference Include="Dommel, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dommel.1.10.1\lib\net451\Dommel.dll</HintPath>
+    </Reference>
+    <Reference Include="Keyence.AutoID.SDK">
+      <HintPath>DLL\Keyence.AutoID.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>packages\NLog.4.5.4\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PanasonicLP410, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\PanasonicLP410.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VncClientControlCommon, Version=6.17.921.1422, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\VncClientControlCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="VncClientControlCommonLib, Version=6.17.921.1422, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\VncClientControlCommonLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APP.cs" />
+    <Compile Include="Repository\DataPathRepository.cs" />
+    <Compile Include="Repository\DataSystemRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDataPathRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDataSystemRepository.cs" />
+    <Compile Include="Repository\Models\DbModels\DataPath.cs" />
+    <Compile Include="Repository\Models\DbModels\DataSystem.cs" />
+    <Compile Include="Shared\ControlItem\ControlProperty\DateTimeProprty.cs" />
+    <Compile Include="Shared\ControlItem\ControlProperty\LiveviewFormProperty.cs" />
+    <Compile Include="Repository\ErrorDescriptionRepository.cs" />
+    <Compile Include="Repository\Interfaces\IErrorDescriptionRepository.cs" />
+    <Compile Include="Repository\Interfaces\IRecChangeRepository.cs" />
+    <Compile Include="Repository\Interfaces\IRecErrorRepository.cs" />
+    <Compile Include="Repository\Models\DbModels\ErrorDescription.cs" />
+    <Compile Include="Repository\Models\DbModels\RecChange.cs" />
+    <Compile Include="Repository\Models\DbModels\RecError.cs" />
+    <Compile Include="Repository\RecChangeRepository.cs" />
+    <Compile Include="Repository\RecErrorRepository.cs" />
+    <Compile Include="Service\ErrorDescriptionService.cs" />
+    <Compile Include="Service\Interfaces\IErrorDescriptionService.cs" />
+    <Compile Include="Service\Interfaces\IRecChangeService.cs" />
+    <Compile Include="Service\Interfaces\IRecErrorService.cs" />
+    <Compile Include="Service\Models\FormStartModel.cs" />
+    <Compile Include="Service\RecChangeService.cs" />
+    <Compile Include="Service\RecErrorService.cs" />
+    <Compile Include="ViewControls\Reader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\Reader.Designer.cs">
+      <DependentUpon>Reader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\ControlItem\ControlProperty\ButtonProperty.cs" />
+    <Compile Include="Shared\ControlItem\ControlProperty\ListViewProperty.cs" />
+    <Compile Include="Repository\DataLotRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDataLotRepository.cs" />
+    <Compile Include="Repository\Interfaces\ILaserFnoRepository.cs" />
+    <Compile Include="Repository\LaserFnoRepository.cs" />
+    <Compile Include="Repository\Models\DbModels\DataLot.cs" />
+    <Compile Include="Repository\Models\DbModels\LaserFNO.cs" />
+    <Compile Include="Service\DataLaserService.cs" />
+    <Compile Include="Service\DataLotService.cs" />
+    <Compile Include="Service\Interfaces\IDataLaserService.cs" />
+    <Compile Include="Service\Interfaces\IDataLotService.cs" />
+    <Compile Include="Service\Interfaces\ILaserFnoService.cs" />
+    <Compile Include="Service\LaserFnoService.cs" />
+    <Compile Include="Shared\ControlItem\Event\LabelEvent.cs" />
+    <Compile Include="Shared\ControlItem\Event\TextBoxEvent.cs" />
+    <Compile Include="FormStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStart.Designer.cs">
+      <DependentUpon>FormStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalData.cs" />
+    <Compile Include="Shared\Method\PieceCalculationMethod.cs" />
+    <Compile Include="Shared\PLC\DmTable.cs" />
+    <Compile Include="Shared\PLC\PLCMethod.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AccountRepository.cs" />
+    <Compile Include="Repository\BaseConnetcion.cs" />
+    <Compile Include="Repository\DapperMapping\ColumnAttributeTypeMapper.cs" />
+    <Compile Include="Repository\DapperMapping\TypeMapper.cs" />
+    <Compile Include="Repository\DataJudgeRepository.cs" />
+    <Compile Include="Repository\DataLaserRepository.cs" />
+    <Compile Include="Repository\DataPartNoRepository.cs" />
+    <Compile Include="Repository\DataTrayRepository.cs" />
+    <Compile Include="Repository\Models\DbModels\Account.cs" />
+    <Compile Include="Repository\Models\DbModels\DataJudge.cs" />
+    <Compile Include="Repository\Models\DbModels\DataLaser.cs" />
+    <Compile Include="Repository\Models\DbModels\DataPartNo.cs" />
+    <Compile Include="Repository\Models\DbModels\DataTray.cs" />
+    <Compile Include="Repository\Interfaces\IAccountRepository.cs" />
+    <Compile Include="Repository\Interfaces\IBaseRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDataJudgeRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDataLaserRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDataPartNoRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDataTrayRepository.cs" />
+    <Compile Include="Repository\Interfaces\IPartNoJoinLaserRepository.cs" />
+    <Compile Include="Repository\Interfaces\IPartNoJoinTrayAndLaserRepository.cs" />
+    <Compile Include="Repository\Models\JoinModels\PartNoJoinLaser.cs" />
+    <Compile Include="Repository\Models\JoinModels\PartNoJoinTrayAndLaser.cs" />
+    <Compile Include="Repository\PartNoJoinLaserRepository.cs" />
+    <Compile Include="Repository\PartNoJoinTrayAndLaserRepository.cs" />
+    <Compile Include="Service\AccountService.cs" />
+    <Compile Include="Service\DataJudgeService.cs" />
+    <Compile Include="Service\DataPartNoService.cs" />
+    <Compile Include="Service\DataTrayService.cs" />
+    <Compile Include="Service\Interfaces\IAccountService.cs" />
+    <Compile Include="Service\Interfaces\IBaseService.cs" />
+    <Compile Include="Service\Interfaces\IDataJudgeService.cs" />
+    <Compile Include="Service\Interfaces\IDataPartNoService.cs" />
+    <Compile Include="Service\Interfaces\IDataTrayService.cs" />
+    <Compile Include="Service\Interfaces\IPartNoJoinTrayAndLaserService.cs" />
+    <Compile Include="Service\Interfaces\IPartNoJoinLaserService.cs" />
+    <Compile Include="Service\Models\ResponseModel.cs" />
+    <Compile Include="Service\PartNoJoinLaserService.cs" />
+    <Compile Include="Service\PartNoJoinTrayAndLaserService.cs" />
+    <Compile Include="Shared\Dictionarys\EquipmentDictionary.cs" />
+    <Compile Include="Shared\Dictionarys\FormStartDictionary.cs" />
+    <Compile Include="Shared\Dictionarys\Interfaces\IbassDictionary.cs" />
+    <Compile Include="Shared\Dictionarys\JisNumDictionary.cs" />
+    <Compile Include="Shared\Enums\AccountEnum.cs" />
+    <Compile Include="Shared\Enums\PartNoEnum.cs" />
+    <Compile Include="Shared\Enums\StatusEnum.cs" />
+    <Compile Include="Shared\Enums\TrayEnum.cs" />
+    <Compile Include="ProjectFunction\Globals\GlobalParameter.cs" />
+    <Compile Include="Shared\Method\ValidateMethod.cs" />
+    <Compile Include="Shared\ControlItem\ControlProperty\DataGridviewProperty.cs" />
+    <Compile Include="Shared\Method\DescriptionMethod.cs" />
+    <Compile Include="Shared\Method\TypeMethod.cs" />
+    <Compile Include="Shared\Method\SerialPortMethod.cs" />
+    <Compile Include="ProjectFunction\FormFunction\JisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectFunction\FormFunction\JisForm.Designer.cs">
+      <DependentUpon>JisForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectFunction\FormFunction\Keyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectFunction\FormFunction\Keyboard.Designer.cs">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectFunction\FormFunction\LaserReady.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectFunction\FormFunction\LaserReady.Designer.cs">
+      <DependentUpon>LaserReady.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectFunction\FormFunction\TraySearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectFunction\FormFunction\TraySearch.Designer.cs">
+      <DependentUpon>TraySearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\AccountSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\AccountSet.Designer.cs">
+      <DependentUpon>AccountSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\LaserPrinting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\LaserPrinting.Designer.cs">
+      <DependentUpon>LaserPrinting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\LaserSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\LaserSet.Designer.cs">
+      <DependentUpon>LaserSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\PartNoSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\PartNoSet.Designer.cs">
+      <DependentUpon>PartNoSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\PartNoWritePLC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\PartNoWritePLC.Designer.cs">
+      <DependentUpon>PartNoWritePLC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\Report\RecChangeReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\Report\RecChangeReport.Designer.cs">
+      <DependentUpon>RecChangeReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\Report\RecErrorReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\Report\RecErrorReport.Designer.cs">
+      <DependentUpon>RecErrorReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\TraySet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewControls\TraySet.Designer.cs">
+      <DependentUpon>TraySet.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ViewControls\Reader.resx">
+      <DependentUpon>Reader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStart.resx">
+      <DependentUpon>FormStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ProjectFunction\FormFunction\JisForm.resx">
+      <DependentUpon>JisForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectFunction\FormFunction\Keyboard.resx">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectFunction\FormFunction\LaserReady.resx">
+      <DependentUpon>LaserReady.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectFunction\FormFunction\TraySearch.resx">
+      <DependentUpon>TraySearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\AccountSet.resx">
+      <DependentUpon>AccountSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\LaserPrinting.resx">
+      <DependentUpon>LaserPrinting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\LaserSet.resx">
+      <DependentUpon>LaserSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\PartNoSet.resx">
+      <DependentUpon>PartNoSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\PartNoWritePLC.resx">
+      <DependentUpon>PartNoWritePLC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\Report\RecChangeReport.resx">
+      <DependentUpon>RecChangeReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\Report\RecErrorReport.resx">
+      <DependentUpon>RecErrorReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewControls\TraySet.resx">
+      <DependentUpon>TraySet.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ProjectFunction\Resources\Actions-application-exit-icon.png" />
+    <Content Include="ProjectFunction\Resources\Date End.jpg" />
+    <Content Include="ProjectFunction\Resources\Date Start.jpg" />
+    <Content Include="ProjectFunction\Resources\excel-xls-icon.png" />
+    <Content Include="ProjectFunction\Resources\GREEN_S.jpg" />
+    <Content Include="ProjectFunction\Resources\GREEN亮.jpg" />
+    <Content Include="ProjectFunction\Resources\laser_wip.png" />
+    <Content Include="ProjectFunction\Resources\loginPossword .png" />
+    <Content Include="ProjectFunction\Resources\loginUser.png" />
+    <Content Include="ProjectFunction\Resources\Off.bmp" />
+    <Content Include="ProjectFunction\Resources\On.bmp" />
+    <Content Include="ProjectFunction\Resources\RED_S.jpg" />
+    <Content Include="ProjectFunction\Resources\RED亮.jpg" />
+    <Content Include="ProjectFunction\Resources\Windows-Log-Off-icon.png" />
+    <Content Include="ProjectFunction\Resources\YELLOW_S.jpg" />
+    <Content Include="ProjectFunction\Resources\YELLOW亮.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
